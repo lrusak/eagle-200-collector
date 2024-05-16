@@ -1,0 +1,21 @@
+body {
+  background-color: black;
+}
+
+#power {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12vw;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#clients {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  color: white;
+}

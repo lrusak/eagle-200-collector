@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Security-Policy"
+      content="default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src *; style-src * 'unsafe-inline';">
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+  <script src="https://cdn.socket.io/3.1.3/socket.io.min.js" integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh" crossorigin="anonymous"></script>
+
+  <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="static/css/main.css">
+
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(() => {
+      const socket = io('/test');
+
+      socket.on('newpower', msg => {
+          const power = `${msg.power.toFixed(1)} W`
+
+          console.log("Power: " + power);
+
+          $('#power').text(power);
+      });
+
+      socket.on('clients', msg => {
+          const clients = `Clients: ${msg.clients}`;
+          console.log(clients);
+          $('#clients').text(clients);
+      });
+
+    });
+  </script>
+</head>
+<body>
+  <div id="power"></div>
+  <p id="clients"></p>
+</body>
+</html>
